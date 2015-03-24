@@ -135,77 +135,80 @@
 
         for (int item = 0; item < [self.collectionView numberOfItemsInSection:section]; item ++) {
             
+            CGSize itemSize = self.itemSize;
+            
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
+
             if([self.collectionView.delegate conformsToProtocol:@protocol(UICollectionViewDelegateFlowLayout)] && [(id<UICollectionViewDelegateFlowLayout>)self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:sizeForItemAtIndexPath:)])
             {
-                
-                NSIndexPath *currentIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
-                
-                CGSize itemSize = [(id<UICollectionViewDelegateFlowLayout>)self.collectionView.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath: currentIndexPath];
-                
-                LayoutElement *itemElement = [LayoutElement new];
-                itemElement.indexPath = currentIndexPath;
-                
-                CGFloat minAvailableX = self.collectionView.contentInset.left + sectionEdgeInsets.left;
-                
-                if (item == 0) {
-                    itemElement.frame = CGRectMake(minAvailableX, maxH, itemSize.width, itemSize.height);
-
-                    itemElement.column = 0;
-                    
-                    elementWithMaxY = itemElement;
-                }
-                
-                else if (item == 1) {
-
-                    if (itemSize.width + CGRectGetMaxX(elementWithMaxY.frame) + interitemSpacing + sectionEdgeInsets.right + self.collectionView.contentInset.right > self.collectionView.bounds.size.width) {
-                        itemElement.frame = CGRectMake(minAvailableX, maxH + lineSpacing, itemSize.width, itemSize.height);
-                        itemElement.column = 0;
-                        
-                    } else {
-                        itemElement.frame = CGRectMake(CGRectGetMaxX(elementWithMaxY.frame) + interitemSpacing, CGRectGetMinY(elementWithMaxY.frame), itemSize.width, itemSize.height);
-                        itemElement.column = 1;
-                    }
-
-                }
-                
-                
-                else {
-                    
-                    if (itemSize.width + CGRectGetWidth(elementWithMaxY.frame) + interitemSpacing + sectionEdgeInsets.right + sectionEdgeInsets.left + self.collectionView.contentInset.right + self.collectionView.contentInset.left > self.collectionView.bounds.size.width) {
-                        itemElement.frame = CGRectMake(minAvailableX, maxH + lineSpacing, itemSize.width, itemSize.height);
-                        itemElement.column = 0;
-                        
-                    } else {
-                        
-                        itemElement.frame = CGRectMake(CGRectGetMinX(elementWithSecondY.frame), CGRectGetMaxY(elementWithSecondY.frame) + lineSpacing, itemSize.width, itemSize.height);
-                        itemElement.column = elementWithSecondY.column;
-                        
-                    }
-                    
-                }
-  
-                
-                // -----  记录具有最大y 和 第二大y 的element. 如果, 两者最大y值相等, 则左边的为第二大, 右边的为最大
-                if (CGRectGetMaxY(itemElement.frame) > CGRectGetMaxY(elementWithMaxY.frame)  || (CGRectGetMaxY(itemElement.frame) == CGRectGetMaxY(elementWithMaxY.frame) && itemElement.column == 1)) {
-                    
-                    elementWithSecondY = elementWithMaxY;
-                    
-                    elementWithMaxY = itemElement;
-                    
-                } else {
-                    elementWithSecondY = itemElement;
-                }
-                
-                maxH = CGRectGetMaxY(elementWithMaxY.frame);
-                
-                
-                UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:currentIndexPath];
-                
-                attributes.frame = itemElement.frame;
-                
-                self.attributesForIndexPath[currentIndexPath] = attributes;
+                itemSize = [(id<UICollectionViewDelegateFlowLayout>)self.collectionView.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath: currentIndexPath];
 
             }
+            
+            
+            LayoutElement *itemElement = [LayoutElement new];
+            itemElement.indexPath = currentIndexPath;
+            
+            CGFloat minAvailableX = self.collectionView.contentInset.left + sectionEdgeInsets.left;
+            
+            if (item == 0) {
+                itemElement.frame = CGRectMake(minAvailableX, maxH, itemSize.width, itemSize.height);
+                
+                itemElement.column = 0;
+                
+                elementWithMaxY = itemElement;
+            }
+            
+            else if (item == 1) {
+                
+                if (itemSize.width + CGRectGetMaxX(elementWithMaxY.frame) + interitemSpacing + sectionEdgeInsets.right + self.collectionView.contentInset.right > self.collectionView.bounds.size.width) {
+                    itemElement.frame = CGRectMake(minAvailableX, maxH + lineSpacing, itemSize.width, itemSize.height);
+                    itemElement.column = 0;
+                    
+                } else {
+                    itemElement.frame = CGRectMake(CGRectGetMaxX(elementWithMaxY.frame) + interitemSpacing, CGRectGetMinY(elementWithMaxY.frame), itemSize.width, itemSize.height);
+                    itemElement.column = 1;
+                }
+                
+            }
+            
+            
+            else {
+                
+                if (itemSize.width + CGRectGetWidth(elementWithMaxY.frame) + interitemSpacing + sectionEdgeInsets.right + sectionEdgeInsets.left + self.collectionView.contentInset.right + self.collectionView.contentInset.left > self.collectionView.bounds.size.width) {
+                    itemElement.frame = CGRectMake(minAvailableX, maxH + lineSpacing, itemSize.width, itemSize.height);
+                    itemElement.column = 0;
+                    
+                } else {
+                    
+                    itemElement.frame = CGRectMake(CGRectGetMinX(elementWithSecondY.frame), CGRectGetMaxY(elementWithSecondY.frame) + lineSpacing, itemSize.width, itemSize.height);
+                    itemElement.column = elementWithSecondY.column;
+                    
+                }
+                
+            }
+            
+            
+            // -----  记录具有最大y 和 第二大y 的element. 如果, 两者最大y值相等, 则左边的为第二大, 右边的为最大
+            if (CGRectGetMaxY(itemElement.frame) > CGRectGetMaxY(elementWithMaxY.frame)  || (CGRectGetMaxY(itemElement.frame) == CGRectGetMaxY(elementWithMaxY.frame) && itemElement.column == 1)) {
+                
+                elementWithSecondY = elementWithMaxY;
+                
+                elementWithMaxY = itemElement;
+                
+            } else {
+                elementWithSecondY = itemElement;
+            }
+            
+            maxH = CGRectGetMaxY(elementWithMaxY.frame);
+            
+            
+            UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:currentIndexPath];
+            
+            attributes.frame = itemElement.frame;
+            
+            self.attributesForIndexPath[currentIndexPath] = attributes;
+            
         }
 
         
@@ -245,24 +248,85 @@
     for (NSInteger section = 0, sections = [self.collectionView numberOfSections]; section < sections; section++) {
         
         NSIndexPath *sectionIndexPath = [NSIndexPath indexPathForItem:0 inSection:section];
-        UICollectionViewLayoutAttributes *headerAttributes = [self layoutAttributesForSupplementaryViewOfKind: UICollectionElementKindSectionHeader atIndexPath:sectionIndexPath];
         
+        // header
+        UICollectionViewLayoutAttributes *headerAttributes = [self layoutAttributesForSupplementaryViewOfKind: UICollectionElementKindSectionHeader atIndexPath:sectionIndexPath];
+       
         if (!CGSizeEqualToSize(headerAttributes.frame.size, CGSizeZero) && CGRectIntersectsRect(headerAttributes.frame, rect)) {
             
             [layoutAttributes addObject:headerAttributes];
         }
         
-        for (int i = 0; i < [self.collectionView numberOfItemsInSection:section]; i++) {
+        // items
+//        for (int i = 0; i < [self.collectionView numberOfItemsInSection:section]; i++) {
+//            
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
+//            UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+//            
+//            if (CGRectIntersectsRect(rect, attributes.frame)) {
+//                [layoutAttributes addObject:attributes];
+//            }
+//        }
+        
+        if([self.collectionView numberOfItemsInSection:section]){
+      
+            NSInteger mid = [self.collectionView numberOfItemsInSection:section]/2;
+            NSInteger firstMatch = NSNotFound;
             
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:section];
-            UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+            NSInteger left = 0;
+            NSInteger right = [self.collectionView numberOfItemsInSection:section];
             
-            if (CGRectIntersectsRect(rect, attributes.frame)) {
-                [layoutAttributes addObject:attributes];
+            do {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:mid inSection:section];
+                UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+                
+                if (CGRectIntersectsRect(rect, attributes.frame)) {
+                    firstMatch = mid;
+                } else {
+                    if(attributes.frame.origin.y >= CGRectGetMaxY(rect)){
+                        right = mid-1;
+                    } else if(CGRectGetMaxY(attributes.frame) <= rect.origin.y){
+                        left = mid+1;
+                    }
+                    
+                    mid = (left+right)/2;
+                }
+            } while (mid >= 0 && mid < [self.collectionView numberOfItemsInSection:section] && firstMatch == NSNotFound && left < right);
+            
+            if(firstMatch != NSNotFound){
+                //left part
+                NSInteger killCount = 15;
+                for(NSInteger j = firstMatch; j >= 0; j--){
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:j inSection:section];
+                    UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+                    if (CGRectIntersectsRect(rect, attributes.frame)) {
+                        [layoutAttributes insertObject:attributes atIndex:0];
+                    } else if(killCount == 0){
+                        break;
+                    } else {
+                        killCount--;
+                    }
+                }
+                
+                killCount = 15;
+                
+                for(NSInteger j = firstMatch+1; j < [self.collectionView numberOfItemsInSection:section]; j++){
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:j inSection:section];
+                    UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+                    if (CGRectIntersectsRect(rect, attributes.frame)) {
+                        [layoutAttributes addObject:attributes];
+                    } else if(killCount == 0){
+                        break;
+                    } else {
+                        killCount--;
+                    }
+                }
             }
         }
+
         
-        UICollectionViewLayoutAttributes *footerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter atIndexPath:sectionIndexPath]; //UICollectionElementCategoryDecorationView
+        // footer
+        UICollectionViewLayoutAttributes *footerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter atIndexPath:sectionIndexPath];
         
         if (! CGSizeEqualToSize(footerAttributes.frame.size, CGSizeZero) && CGRectIntersectsRect(footerAttributes.frame, rect)) {
             
@@ -301,5 +365,6 @@
 {
     return self.contentSize;
 }
+
 
 @end

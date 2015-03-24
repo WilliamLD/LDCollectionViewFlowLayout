@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		18195CA01AC100150006E37A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195C9F1AC100150006E37A /* main.m */; };
 		18195CA31AC100150006E37A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195CA21AC100150006E37A /* AppDelegate.m */; };
-		18195CA61AC100150006E37A /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195CA51AC100150006E37A /* FirstViewController.m */; };
-		18195CA91AC100150006E37A /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195CA81AC100150006E37A /* SecondViewController.m */; };
 		18195CAC1AC100150006E37A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18195CAA1AC100150006E37A /* Main.storyboard */; };
 		18195CAE1AC100150006E37A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18195CAD1AC100150006E37A /* Images.xcassets */; };
 		18195CB11AC100150006E37A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18195CAF1AC100150006E37A /* LaunchScreen.xib */; };
 		18195CBD1AC100150006E37A /* LDCollectionViewFlowLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195CBC1AC100150006E37A /* LDCollectionViewFlowLayoutTests.m */; };
 		18195D3A1AC107460006E37A /* LDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195D391AC107460006E37A /* LDCollectionViewFlowLayout.m */; };
+		18195D3D1AC1096A0006E37A /* LDFirstCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195D3C1AC1096A0006E37A /* LDFirstCollectionViewController.m */; };
+		18195D401AC109760006E37A /* LDSecondCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195D3F1AC109760006E37A /* LDSecondCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +34,6 @@
 		18195C9F1AC100150006E37A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18195CA11AC100150006E37A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18195CA21AC100150006E37A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		18195CA41AC100150006E37A /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		18195CA51AC100150006E37A /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		18195CA71AC100150006E37A /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		18195CA81AC100150006E37A /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		18195CAB1AC100150006E37A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18195CAD1AC100150006E37A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18195CB01AC100150006E37A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -46,6 +42,10 @@
 		18195CBC1AC100150006E37A /* LDCollectionViewFlowLayoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDCollectionViewFlowLayoutTests.m; sourceTree = "<group>"; };
 		18195D381AC107460006E37A /* LDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		18195D391AC107460006E37A /* LDCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		18195D3B1AC1096A0006E37A /* LDFirstCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDFirstCollectionViewController.h; sourceTree = "<group>"; };
+		18195D3C1AC1096A0006E37A /* LDFirstCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDFirstCollectionViewController.m; sourceTree = "<group>"; };
+		18195D3E1AC109760006E37A /* LDSecondCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDSecondCollectionViewController.h; sourceTree = "<group>"; };
+		18195D3F1AC109760006E37A /* LDSecondCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDSecondCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +69,7 @@
 		18195C911AC100150006E37A = {
 			isa = PBXGroup;
 			children = (
+				18195D371AC107460006E37A /* LDCollectionViewLayout */,
 				18195C9C1AC100150006E37A /* LDCollectionViewFlowLayout */,
 				18195CB91AC100150006E37A /* LDCollectionViewFlowLayoutTests */,
 				18195C9B1AC100150006E37A /* Products */,
@@ -87,13 +88,12 @@
 		18195C9C1AC100150006E37A /* LDCollectionViewFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
-				18195D371AC107460006E37A /* LDCollectionViewLayout */,
 				18195CA11AC100150006E37A /* AppDelegate.h */,
 				18195CA21AC100150006E37A /* AppDelegate.m */,
-				18195CA41AC100150006E37A /* FirstViewController.h */,
-				18195CA51AC100150006E37A /* FirstViewController.m */,
-				18195CA71AC100150006E37A /* SecondViewController.h */,
-				18195CA81AC100150006E37A /* SecondViewController.m */,
+				18195D3B1AC1096A0006E37A /* LDFirstCollectionViewController.h */,
+				18195D3C1AC1096A0006E37A /* LDFirstCollectionViewController.m */,
+				18195D3E1AC109760006E37A /* LDSecondCollectionViewController.h */,
+				18195D3F1AC109760006E37A /* LDSecondCollectionViewController.m */,
 				18195CAA1AC100150006E37A /* Main.storyboard */,
 				18195CAD1AC100150006E37A /* Images.xcassets */,
 				18195CAF1AC100150006E37A /* LaunchScreen.xib */,
@@ -134,7 +134,8 @@
 				18195D381AC107460006E37A /* LDCollectionViewFlowLayout.h */,
 				18195D391AC107460006E37A /* LDCollectionViewFlowLayout.m */,
 			);
-			path = LDCollectionViewLayout;
+			name = LDCollectionViewLayout;
+			path = LDCollectionViewFlowLayout/LDCollectionViewLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18195CA91AC100150006E37A /* SecondViewController.m in Sources */,
 				18195CA31AC100150006E37A /* AppDelegate.m in Sources */,
-				18195CA61AC100150006E37A /* FirstViewController.m in Sources */,
+				18195D401AC109760006E37A /* LDSecondCollectionViewController.m in Sources */,
+				18195D3D1AC1096A0006E37A /* LDFirstCollectionViewController.m in Sources */,
 				18195D3A1AC107460006E37A /* LDCollectionViewFlowLayout.m in Sources */,
 				18195CA01AC100150006E37A /* main.m in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  LDSecondCollectionViewController.h
 //  LDCollectionViewFlowLayout
 //
 //  Created by LD on 15/3/24.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
-
+@interface LDSecondCollectionViewController : UICollectionViewController
 
 @end
-

@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  LDFirstCollectionViewController.h
 //  LDCollectionViewFlowLayout
 //
 //  Created by LD on 15/3/24.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-
+@interface LDFirstCollectionViewController : UICollectionViewController
 
 @end
-
