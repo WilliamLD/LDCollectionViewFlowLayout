@@ -15,6 +15,7 @@
 		18195CAE1AC100150006E37A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18195CAD1AC100150006E37A /* Images.xcassets */; };
 		18195CB11AC100150006E37A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18195CAF1AC100150006E37A /* LaunchScreen.xib */; };
 		18195CBD1AC100150006E37A /* LDCollectionViewFlowLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195CBC1AC100150006E37A /* LDCollectionViewFlowLayoutTests.m */; };
+		18195D3A1AC107460006E37A /* LDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18195D391AC107460006E37A /* LDCollectionViewFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		18195CB61AC100150006E37A /* LDCollectionViewFlowLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LDCollectionViewFlowLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18195CBB1AC100150006E37A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18195CBC1AC100150006E37A /* LDCollectionViewFlowLayoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDCollectionViewFlowLayoutTests.m; sourceTree = "<group>"; };
+		18195D381AC107460006E37A /* LDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		18195D391AC107460006E37A /* LDCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 		18195C9C1AC100150006E37A /* LDCollectionViewFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
+				18195D371AC107460006E37A /* LDCollectionViewLayout */,
 				18195CA11AC100150006E37A /* AppDelegate.h */,
 				18195CA21AC100150006E37A /* AppDelegate.m */,
 				18195CA41AC100150006E37A /* FirstViewController.h */,
@@ -122,6 +126,15 @@
 				18195CBB1AC100150006E37A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18195D371AC107460006E37A /* LDCollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				18195D381AC107460006E37A /* LDCollectionViewFlowLayout.h */,
+				18195D391AC107460006E37A /* LDCollectionViewFlowLayout.m */,
+			);
+			path = LDCollectionViewLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +240,7 @@
 				18195CA91AC100150006E37A /* SecondViewController.m in Sources */,
 				18195CA31AC100150006E37A /* AppDelegate.m in Sources */,
 				18195CA61AC100150006E37A /* FirstViewController.m in Sources */,
+				18195D3A1AC107460006E37A /* LDCollectionViewFlowLayout.m in Sources */,
 				18195CA01AC100150006E37A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +434,7 @@
 				18195CC21AC100150006E37A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18195CC31AC100150006E37A /* Build configuration list for PBXNativeTarget "LDCollectionViewFlowLayoutTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +443,7 @@
 				18195CC51AC100150006E37A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
